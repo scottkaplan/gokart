@@ -327,7 +327,7 @@ def runCmd(parms):
 def parseCmd(textcommand):
 
     if(len(textcommand)==0):
-        return "Missing A Command", False
+        return "No command", False
 
     parm_idx = 0
     parms = textcommand.split()
@@ -385,47 +385,62 @@ def runCli():
 
 def cli(str):
     err, result = parseCmd(str)
-
-    if(err):
-        return err, False
-
+    if(err): return err, False
     return False, result
 
 
 def init():
+    global radio
     radio = serial.Serial("/dev/ttyUSB0", baudrate=115200, timeout=0.1)
-
     radio.parity = serial.PARITY_NONE
     radio.stopbits = serial.STOPBITS_ONE
     radio.xonxoff = False
     radio.rtscts = False
     radio.dsrdtr = False
+    try:
+        radio.open()
+    except Exception, e:
+        return "error opening serial port:" + str(e)
 
     global pp
     pp = pprint.PrettyPrinter(indent=2)
 
-    try:
-        radio.open()
+    return
 
-    except Exception, e:
-        print "error opening serial port:" + str(e)
-        exit()
+def expect (cmd, expected_err, expected_result):
+    print "Running command '%s'" % cmd
+    err, result = cli(cmd)
+
+    if (expected_err):
+        print "\tExpect error '%s'" % expected_err
+        if (err):
+            if (err == expected_err):
+                print "\tPassed"
+            else:
+                print "\tFailed: Got error '%s'" % err
+        elif (result):
+            print "\tFailed: Got result '%s'" % result
+
+    if (expected_result):
+        print "\tExpect result '%s'" % expected_result
+        if (result):
+            if (cmp (result, expected_result)):
+                print "\tPassed"
+            else:
+                print "\tFailed: Got result '%s'" % result
+        elif (err):
+            print "\tFailed: Got error '%s'" % err
+    return
+
+def test ():
+    expect("baud get", False, "")
+    expect("", "No command", False)
+    return
 
 def main ():
     err = init()
-    if(err):
-        return err, False
+    if(err): return err, False
 
-    err, result  = cli("baud get")
+    test()
 
-    if(err):
-        return err, False
-
-    return False, result
-
-err, result = main()
-
-if(err):
-    pp.pprint(err)
-
-pp.pprint(result)
+main()
