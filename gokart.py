@@ -283,29 +283,35 @@ def createCtrlStr():
 	serialcommand += finalcommand
 	serialcommand += value
 
-	return
+    return
 
 def sendCtrlStr(str):
 
-    radio.write(cmd_str)
+    radio.write(str)
     radio.write("\r")
 
-    response_str = ""
-    line = ""
-
+    # handle multi-line response
+    response = []
     while True:
-
         line = radio.readline()
-        
+
+        # We're done when we see '>' on a line by itself
         if (line == ">"):
             break
 
-        line = line.replace("\r\n","")
-
-        response_str += line
-	
+        # lines come from the controller
+        # beginning with '>' and \r\n terminated
+        # Strip those
 	line = line.replace(">","")
-	return(response_str)
+        line = line.replace("\r\n","")
+        response.append(line)
+
+    if (len(response) == 1):
+        # If there is only one line,
+        # don't use line termination
+        return (response[0])
+    else:
+        return ("\n".join(response))
 
 def runCmd(parms):
     err,cmd_str = createCtrlStr(parms)
