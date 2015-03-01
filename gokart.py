@@ -246,13 +246,6 @@ def good_channel (channel):
 def good_mode (mode):
     return mode == "get" or mode == "set" or mode == "actual"
 
-def setupScreen():
-    openscreen  = "Welcome to the GoKart Setup System. Please enter your command in the following syntax: get baud 0 val"
-    
-    pp.pprint(command_map)
-    
-    return openscreen
-
 def createCtrlStr(parms):
     # Take a dictionary with the keys:
     #   cmd, mode, channel, value
@@ -303,6 +296,8 @@ def createCtrlStr(parms):
     return False, ctrl_str
 
 def sendCtrlStr(str):
+    # send str to the controller (serial port)
+    # and return the string that the controller sends back
 
     radio.write(str)
     radio.write("\r")
@@ -329,15 +324,6 @@ def sendCtrlStr(str):
         return False, response[0]
     else:
         return False, "\n".join(response)
-
-def kart_api(parms):
-    err,cmd_str = createCtrlStr(parms)
-    if (err): return err, False
-
-    err,result = sendCtrlStr(cmd_str)
-    if (err): return err, False
-
-    return False, result
 
 def parseCmd(cmd_str):
     # takes a string of the form:
@@ -394,6 +380,14 @@ def cli(str):
 
     return False, result
 
+def kart_api(parms):
+    err,cmd_str = createCtrlStr(parms)
+    if (err): return err, False
+
+    err,result = sendCtrlStr(cmd_str)
+    if (err): return err, False
+
+    return False, result
 
 def init():
     global radio
