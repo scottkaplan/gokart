@@ -10,235 +10,241 @@ import re
 command_map = {
     'brake' : 
     {'command':	'brake',
-     'value':	'B',
+     'reg_name':'B',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'position_error_dead_band' : 
     {'command':	'position_error_dead_band',
-     'value':	'd',
+     'reg_name':'d',
      'is_reg':	 True, 
      'chan_req': True
      },				
 
     'velocity_error_gain' : 
     {'command':	'velocity_error_gain',
-     'value':	'D',
+     'reg_name':'D',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'position' : 
     {'command':	'position',
-     'value':	'e',
+     'reg_name':'e',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'back_emf_factor' : 
     {'command':	'back_emf_factor',
-     'value':	'E',
+     'reg_name':'E',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'input_factor' : 
     {'command':	'input_factor',
-     'value':	'F',
+     'reg_name':'F',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'integral_error_gain' : 
     {'command':	'integral_error_gain',
-     'value':	'l',
+     'reg_name':'l',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'input_select' : 
     {'command':	'input_select',
-     'value':	'j',
+     'reg_name':'j',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'feedback_select' : 
     {'command':	'feedback_select',
-     'value':	'J',
+     'reg_name':'J',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'position_limit' : 
     {'command':	'position_limit',
-     'value':	'L',
+     'reg_name':'L',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'minimum_drive' : 
     {'command':	'minimum_drive',
-     'value':	'M',
+     'reg_name':'M',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'mode' : 
     {'command':	'mode',
-     'value':	'm',
+     'reg_name':'m',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'position_set_point' : 
     {'command':	'position_set_point',
-     'value':	'p',
+     'reg_name':'p',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'position_error_gain' : 
     {'command':	'position_error_gain',
-     'value':	'P',
+     'reg_name':'P',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'servo_loop_rate' : 
     {'command':	'servo_loop_rate',
-     'value':	'r',
+     'reg_name':'r',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'power_slew' : 
     {'command':	'power_slew',
-     'value':	's',
+     'reg_name':'s',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'torque_set_point' : 
     {'command':	'torque_set_point',
-     'value':	't',
+     'reg_name':'t',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'torque_limit' : 
     {'command':	'torque_limit',
-     'value':	'T',
+     'reg_name':'T',
      'is_reg':	 True, 
      'chan_req': True
      },				
 
     'unit_amount_for_manual_move' : 
     {'command':	'unit_amount_for_manual_move',
-     'value':	'u',
+     'reg_name':'u',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'unit_amount_for_minimum_move' : 
     {'command':	'unit_amount_for_minimum_move',
-     'value':	'U',
+     'reg_name':'U',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'velocity_set_point' : 
     {'command':	'velocity_set_point',
-     'value':	'v',
+     'reg_name':'v',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'velocity_limit' : 
     {'command':	'velocity_limit',
-     'value':	'V',
+     'reg_name':'V',
      'is_reg':	 True, 
      'chan_req': True
      },
 
     'baud' : 
     {'command':	'baud',
-     'value':	'b',
+     'reg_name':'b',
      'is_reg':	 True, 
      'chan_req': False
      },
 
     'user_interface_mode' : 
     {'command':	'user_interface_mode',
-     'value':	'l',
+     'reg_name':'l',
      'is_reg':	 True, 
      'chan_req': False
      },
 
     'compatible_preset' : 
     {'command':	'compatible_preset',
-     'value':	'Q',
+     'reg_name':'Q',
      'is_reg':	 True, 
      'chan_req': False
      },
 
     'write_load_values_eeprom' : 
     {'command':	'write_load_values_eeprom',
-     'value':	'w',
+     'reg_name':'w',
      'is_reg':	 True, 
      'chan_req': False
      },
 
     'pwm_drive' : 
     {'command':	'pwm_drive',
-     'value':	'd',
+     'reg_name':'d',
      'is_reg':	 False, 
      'chan_req': False
      },
 
     'encoder_count' : 
     {'command':	'encoder_count',
-     'value':	'e',
+     'reg_name':'e',
      'is_reg':	 False, 
      'chan_req': False
      },
 
     'print_paramaters' : 
     {'command':	'print_paramaters',
-     'value':	'p',
+     'reg_name':'p',
      'is_reg':	 False, 
      'chan_req': False
      },
 
     'reset_servo' : 
     {'command':	'reset_servo',
-     'value':	'r',
+     'reg_name':'r',
      'is_reg':	 False, 
      'chan_req': False
      },
 
     'streaming_parameters' : 
     {'command':	'streaming_parameters',
-     'value':	'S',
+     'reg_name':'S',
      'is_reg':	 False, 
      'chan_req': False
      },
 
     'temperature' : 
     {'command':	'temperature',
-     'value':	't',
+     'reg_name':'t',
      'is_reg':	 False, 
      'chan_req': False
      },	
 
     'velocity' : 
     {'command':	'velocity',
-     'value':	'v',
+     'reg_name':'v',
      'is_reg':	 False, 
      'chan_req': False
      },			
     }
+
+def good_channel (channel):
+    return channel == 0 or channel == 1 or channel == 2
+
+def good_mode (mode):
+    return mode == "get" or mode == "set" or mode == "actual"
 
 def setupScreen():
     openscreen  = "Welcome to the GoKart Setup System. Please enter your command in the following syntax: get baud 0 val"
@@ -247,43 +253,54 @@ def setupScreen():
     
     return openscreen
 
-def createCtrlStr():
+def createCtrlStr(parms):
+    # Take a dictionary with the keys:
+    #   cmd, mode, channel, value
+    # and creates a string of the form
+    #   @<channel>['g'|'s'|'a']<register><value>
 
-    serialcommand = ''
-    mode = ''
-    channel = ''
-    controlcommand = ''
-    value = ''
+    cmd = parms['cmd']
+    # cmd_parms contains the meta info for cmd
+    cmd_parms = command_map[cmd]
+    if (cmd_parms == None):
+        return "Bad Command", False
 
-    parm[0]
-    for i in range(len(parm)):
-        if i==0:
-            mode = parm[0]
-            if mode == "get":
-                com_mode = "g"
-            elif mode == "set":
-                com_mode = "s"
-            elif mode == "actual":
-                com_mode = "a"
+    if (cmd_parms['is_reg'] == False):
+        # This is not a register command
+        # Just send the string for this command
+        return False, cmd_parms['reg_name']
 
-            elif i==1:
-                controlcommand = parm[2]
-                commanditem = command_map[controlcommand]
-                finalcommand = commanditem['value']
+    # if we fall thru to here, we have a register command
+    ctrl_str = '@'
 
-            elif i==2:
-                channel = parm[1]
+    if (cmd_parms['chan_req']):
+        if (parms['channel']):
+            channel = parms['channel']
+            if (good_channel (channel)):
+                ctrl_str += parms['channel']
+            else:
+                return "bad channel %s" % channel, False
+        else:
+            return "no channel", False
+    else:
+        # have to include a placeholder for channel
+        ctrl_str += '0'
 
-            elif i==3:
-                value = parm[3]
-	
-	serialcommand += '@'
-	serialcommand += channel
-	serialcommand += com_mode
-	serialcommand += finalcommand
-	serialcommand += value
+    if (parms['mode']):
+        mode = parms['mode']
+        if (not good_mode(mode)):
+            return "bad mode '%s'" % mode, False
+        # append the first char of the mode to the control str
+        ctrl_str += mode[0]
+    else:
+        return "no mode", False
 
-    return
+    if (cmd_parms['reg_name']):
+        ctrl_str += cmd_parms['reg_name']
+    else:
+        return "no register name", False
+
+    return False, ctrl_str
 
 def sendCtrlStr(str):
 
@@ -309,83 +326,72 @@ def sendCtrlStr(str):
     if (len(response) == 1):
         # If there is only one line,
         # don't use line termination
-        return (response[0])
+        return False, response[0]
     else:
-        return ("\n".join(response))
+        return False, "\n".join(response)
 
-def runCmd(parms):
+def kart_api(parms):
     err,cmd_str = createCtrlStr(parms)
-    if (err):
-        return err, False
+    if (err): return err, False
 
     err,result = sendCtrlStr(cmd_str)
-    if (err):
-        return err, False
+    if (err): return err, False
 
     return False, result
 
-def parseCmd(textcommand):
+def parseCmd(cmd_str):
+    # takes a string of the form:
+    #   <cmd> [<mode>] [<channel>] [<value>]
+    #     where mode ::= 'get' | 'set' | 'actual' 
+    #           channel ::= 0 | 1 | 2
+    # and returns a dictionary
+    # containing the parameters needed to call kart_api
 
-    if(len(textcommand)==0):
+    if (len(cmd_str)==0):
         return "No command", False
 
-    parm_idx = 0
-    parms = textcommand.split()
+    parms = cmd_str.split()
 
-    cmd = parms[parm_idx]
-    parm_idx += 1
+    cmd = parms.pop(0)
 
+    # cmd_parms contains the meta info for cmd
     cmd_parms = command_map[cmd]
+    if (cmd_parms == None): return "bad command", False
 
-    if(cmd_parms == None):
-        return "Bad Command", False
-
+    # result is the dictionary that can be passed to kart_api
     result = {}
     result['cmd'] = cmd
 
-    if(cmd_parms['is_reg'] == False):
+    if (cmd_parms['is_reg'] == False):
+        # if this is not a register command, we're done
         return False, parms
 
-    mode = parms[parm_idx]
-    parm_idx += 1
-
-    if (mode != "get" and mode != "set" and mode != "actual"):
-        return "Bad Mode", False
-
+    mode = parms.pop(0)
+    if (not good_mode (mode)): return "bad mode", False
     result['mode'] = mode
 
     if (cmd_parms['chan_req']):
-        channel = parms[parm_idx]
-        parm_idx += 1
-
-        if(channel == None):
-            return "no Channel", False
-        if(channel == 0 or channel == 1 or channel == 2):
+        channel = parms.pop(0)
+        if (channel == None): return "no channel", False
+        if (good_channel (channel)):
             result['channel'] == channel
 
     if (mode == 'set'):
-        value = parms[parm_idx]
-        parm_idx += 1
-
-        if(value == None):
-            return "No Value", False
-        
+        # value is only used for register set commands
+        value = parms.pop(0)
+        if (value == None): return "No Value", False
         result['value'] = value
 
     return False, result
 
 
-def runCli():
-    print setupScreen()
-    
-    input = 1
-    while 1:
-        input = raw_input(">>")
-        cli(input)
-
 def cli(str):
-    err, result = parseCmd(str)
-    if(err): return err, False
+    err, api_parms = parseCmd(str)
+    if (err): return err, False
+
+    err, result = kart_api (api_parms)
+    if (err): return err, False
+
     return False, result
 
 
@@ -424,7 +430,7 @@ def expect (cmd, expected_err, expected_result):
     if (expected_result):
         print "\tExpect result '%s'" % expected_result
         if (result):
-            if (cmp (result, expected_result)):
+            if (result == expected_result):
                 print "\tPassed"
             else:
                 print "\tFailed: Got result '%s'" % result
@@ -433,13 +439,13 @@ def expect (cmd, expected_err, expected_result):
     return
 
 def test ():
-    expect("baud get", False, "")
+    expect("baud get", False, "5")
     expect("", "No command", False)
     return
 
 def main ():
     err = init()
-    if(err): return err, False
+    if (err): return err, False
 
     test()
 
